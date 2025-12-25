@@ -4,7 +4,7 @@ import Card from './components/Card'
 const App = () => {
   return (
     <div>
-      <Card  name="Lakxh" />
+      <Card  name="Lakxh"  details={['class', 'jdjd',"ihsus"]}/>
     </div>
   )
 }
