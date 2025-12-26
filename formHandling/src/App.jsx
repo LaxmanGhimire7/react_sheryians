@@ -1,25 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 const App = () => {
-  const submitHandler =(e)=>{
-    e.preventDefault();
-    console.log("Submitted")
-  }
-
-  const [name, setName] = useState("")
   return (
-    <div>
-     <form className="p-2 "
-     onSubmit={(e)=>{
-      submitHandler(e)
-     }}>
-      <input type="text" className="border" placeholder="Enter your name"
-      onChange={(e)=>{
-     setName( e.target.value)
-      }}
-      value={name} />
-      <button className="bg-green-500 rounded p-2">Submit</button>
-     </form>
+    <div className="bg-black h-screen w-scren">
+      <form className="bg-white w-fit p-20">
+        <input
+          type="text"
+          placeholder="Enter your name"
+          className="border-2 rounded-sm flex px-7 items-start py-2 placeholder-gray-400"
+        />
+      </form>
     </div>
   );
 };
