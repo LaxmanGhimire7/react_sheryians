@@ -37,12 +37,12 @@ const App = () => {
           </button>
         </form>
 
-        <div className=" pl-20 mt-5 space-y-4">
+        <div className=" pl-20 mt-5 space-y-4 w-full">
           {allTask.map((elem, idx) => {
             return (
-              <div className="flex gap-4 p-4" key={idx}>
-                <span>0</span>
-                <h1>{elem.task}</h1>
+              <div className="flex justify-between items-start gap-4 p-4" key={idx}>
+                <span className="shrink items-start">0</span>
+                <h1 className="max-w-[200px] wrap-break-word">{elem.task}</h1>
                 <button onClick={()=>{
                   handleDelete(idx)
                 }} className="bg-red-600 text-white flex ml-32">

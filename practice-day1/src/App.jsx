@@ -6,13 +6,24 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [image, setImage] = useState("");
-  const [allUsers, setAllUsers] = useState([]);
+
+  const allData = JSON.parse(localStorage.getItem('all-user') || "[]");
+  // console.log(allData)
+
+  const [allUsers, setAllUsers] = useState(allData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     //  console.log("submitted")
+    const oldData = [...allUsers];
+     oldData.push(...allUsers,{userName,email,role,image})
 
-    setAllUsers([...allUsers, { userName, email, role, image }]);
+     setAllUsers(oldData);
+      localStorage.setItem("all-user", JSON.stringify(oldData));
+
+    
+
+    // setAllUsers([...allUsers, { userName, email, role, image }]);
 
     setUserName("");
     setEmail("");
@@ -20,11 +31,11 @@ const App = () => {
     setImage("");
   };
 
-  const handleDelete = (idx) =>{
+  const handleDelete = (idx) => {
     const oldData = [...allUsers];
-    oldData.splice(idx,1)
-    setAllUsers(oldData)
-  }
+    oldData.splice(idx, 1);
+    setAllUsers(oldData);
+  };
 
   return (
     <div className="min-h-screen bg-linear-to-br from-black to-white flex flex-col justify-center items-center">
@@ -78,7 +89,7 @@ const App = () => {
         </form>
       </div>
 
-      <div className="flex justify-center gap-5 flex-wrap">
+      {/* <div className="flex justify-center gap-5 flex-wrap">
         {allUsers.map((elem, idx) => {
           return(
           <div key={idx} className="w-[300px] rounded text-center bg-white p-5 mt-6 flex justify-center flex-col items-center">
@@ -94,8 +105,8 @@ const App = () => {
           </div>
           )
         })}
-        {/* <Card /> */}
-      </div>
+      
+      </div> */}
     </div>
   );
 };
