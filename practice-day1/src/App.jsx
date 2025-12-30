@@ -17,12 +17,11 @@ const App = () => {
     //  console.log("submitted")
     const oldData = [...allUsers];
      oldData.push(...allUsers,{userName,email,role,image})
-
+     localStorage.setItem("all-user", JSON.stringify(oldData));
      setAllUsers(oldData);
-      localStorage.setItem("all-user", JSON.stringify(oldData));
+      
 
     
-
     // setAllUsers([...allUsers, { userName, email, role, image }]);
 
     setUserName("");
@@ -32,9 +31,11 @@ const App = () => {
   };
 
   const handleDelete = (idx) => {
-    const oldData = [...allUsers];
-    oldData.splice(idx, 1);
-    setAllUsers(oldData);
+    const oldData2 = [...allUsers];
+    oldData2.splice(idx, 1);
+
+    setAllUsers(oldData2);
+  //  localStorage.removeItem("all-user", JSON.stringify(oldData2));
   };
 
   return (
@@ -89,7 +90,7 @@ const App = () => {
         </form>
       </div>
 
-      {/* <div className="flex justify-center gap-5 flex-wrap">
+      <div className="flex justify-center gap-5 flex-wrap">
         {allUsers.map((elem, idx) => {
           return(
           <div key={idx} className="w-[300px] rounded text-center bg-white p-5 mt-6 flex justify-center flex-col items-center">
@@ -106,7 +107,7 @@ const App = () => {
           )
         })}
       
-      </div> */}
+      </div>
     </div>
   );
 };
