@@ -8,7 +8,7 @@ const App = () => {
   const [userDescription, setUserDescription] = useState("");
   const [image, setImage] = useState("");
 
-  const storeData = JSON.parse(localStorage.getItem('all-user')) || []
+  const storeData = JSON.parse(localStorage.getItem("all-user")) || [];
 
   const [allUser, setAllUser] = useState(storeData);
 
@@ -29,21 +29,21 @@ const App = () => {
     const allData = [...allUser];
     allData.push({ userName, userEmail, userRole, userDescription, image });
     setAllUser(allData);
-    localStorage.setItem('all-user',JSON.stringify(allData))
-    console.log(allData)
+    localStorage.setItem("all-user", JSON.stringify(allData));
+    console.log(allData);
 
-    setUserName("")
-    setUserEmail("")
-    setUserRole("")
-    setUserDescription("")
-    setImage("")
+    setUserName("");
+    setUserEmail("");
+    setUserRole("");
+    setUserDescription("");
+    setImage("");
   };
 
   const handleDelete = (idx) => {
     const oldData = [...allUser];
     oldData.splice(idx, 1);
     setAllUser(oldData);
-    localStorage.setItem('all-user',JSON.stringify(oldData))
+    localStorage.setItem("all-user", JSON.stringify(oldData));
   };
 
   return (
@@ -110,7 +110,12 @@ const App = () => {
       <div className="flex gap-12 flex-wrap justify-center">
         {allUser.map((elem, idx) => {
           return (
-           <Card elem={elem} handleSubmit={handleSubmit} key={idx} handleDelete={handleDelete} />
+            <Card
+              elem={elem}
+              handleSubmit={handleSubmit}
+              key={idx}
+              handleDelete={handleDelete}
+            />
           );
         })}
       </div>
