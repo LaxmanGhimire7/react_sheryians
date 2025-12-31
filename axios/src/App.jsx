@@ -1,20 +1,44 @@
-import { useEffect, useState } from "react"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [pokemon, setPokemon] = useState(null);
 
-  const [counter, setCounter] = useState(0)
+  const getData = async () => {
+    let response = await axios.get("https://pokeapi.co/api/v2/pokemon/ditto");
+    console.log(response.data);
+    setPokemon(response.data)
+  };
 
-  useEffect(()=>{
-  console.log("hii")
-  },[])
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
-    <div className="p-4">
-      <h1 className="text-3xl">{counter}</h1>
-      <button className="" onClick={()=>{
-        setCounter(counter+1)
-      }}>Increase</button>
-    </div>
-  )
-}
+    <div>
 
-export default App
+      {pokemon && (
+        <>
+        <audio controls src={pokemon.cries.legacy}></audio>
+        {/* <h1>{pokemon.abilities.ability}</h1> */}
+
+        {pokemon.abilities.map((elem)=>{
+         console.log(elem.ability.url)
+        })}
+        </>
+      )}
+
+      {/* {pokemon && (
+        <audio controls src={pokemon.cries.legacy}></audio>
+        <h1>{pokemon.abilities}</h1>
+      )} */}
+      {/* {pokemon && (
+       <h1>{pokemon}</h1>
+      )} */}
+
+
+    </div>
+  );
+};
+
+export default App;
