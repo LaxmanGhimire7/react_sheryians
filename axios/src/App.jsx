@@ -1,14 +1,18 @@
-import axios from "axios"
+import { useEffect, useState } from "react"
 
 const App = () => {
 
-  const getData = async() =>{
-    const response = await axios.get("https://picsum.photos/v2/list");
-    console.log(response)
-  }
+  const [counter, setCounter] = useState(0)
+
+  useEffect(()=>{
+  console.log("hii")
+  },[])
   return (
-    <div>
-      <h1 onClick={getData}>Click me</h1>
+    <div className="p-4">
+      <h1 className="text-3xl">{counter}</h1>
+      <button className="" onClick={()=>{
+        setCounter(counter+1)
+      }}>Increase</button>
     </div>
   )
 }
